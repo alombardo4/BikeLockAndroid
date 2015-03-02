@@ -51,7 +51,7 @@ MERGED from com.android.support:support-v4:21.0.3:16:5
 		ADDED from AndroidManifest.xml:16:9
 	android:theme
 		ADDED from AndroidManifest.xml:18:9
-activity#com.michaelchentejada.bikelock.gui.MainActivity
+activity#com.bikelock.bikelock.gui.views.MainActivity
 ADDED from AndroidManifest.xml:19:9
 	android:label
 		ADDED from AndroidManifest.xml:21:13
@@ -67,7 +67,7 @@ category#android.intent.category.LAUNCHER
 ADDED from AndroidManifest.xml:25:17
 	android:name
 		ADDED from AndroidManifest.xml:25:27
-service#com.michaelchentejada.bikelock.bluetooth.BikeLockBluetoothLeService
+service#com.bikelock.bikelock.bluetooth.BikeLockBluetoothLeService
 ADDED from AndroidManifest.xml:28:9
 	android:name
 		ADDED from AndroidManifest.xml:28:18

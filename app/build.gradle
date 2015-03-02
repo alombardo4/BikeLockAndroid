@@ -5,7 +5,7 @@ android {
     buildToolsVersion "21.1.2"
 
     defaultConfig {
-        applicationId "com.michaelchentejada.bikelock"
+        applicationId "com.bikelock.bikelock"
         minSdkVersion 18
         targetSdkVersion 21
     }
