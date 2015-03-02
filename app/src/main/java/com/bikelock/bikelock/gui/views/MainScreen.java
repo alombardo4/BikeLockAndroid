@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.bikelock.bikelock.R;
 import com.bikelock.bikelock.bluetooth.BikeLockBluetoothLeService;
@@ -33,14 +34,19 @@ public class MainScreen extends ListFragment implements OnClickListener{
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
 		PairedDevice device = (PairedDevice) mAdapter.getItem(position);
-		
-		Intent blService = new Intent(getActivity(), BikeLockBluetoothLeService.class);
-		blService.putExtra(BikeLockBluetoothLeService.EXTRA_ADDR, device.getAddress());
-		blService.putExtra(BikeLockBluetoothLeService.EXTRA_PASS, new byte[] {0,1,2,3,4,5,6,7,8,9,0xa,0xb,0xc,0xd,0xe,0xf}); //TODO replace with password
+		connectToDevice(device);
+        Toast.makeText(getActivity().getBaseContext(), getString(R.string.connecting_to_lock), Toast.LENGTH_SHORT).show();
+    }
+
+    private void connectToDevice(PairedDevice device) {
+        Intent blService = new Intent(getActivity(), BikeLockBluetoothLeService.class);
+        blService.putExtra(BikeLockBluetoothLeService.EXTRA_ADDR, device.getAddress());
+        blService.putExtra(BikeLockBluetoothLeService.EXTRA_PASS, new byte[] {0,1,2,3,4,5,6,7,8,9,0xa,0xb,0xc,0xd,0xe,0xf}); //TODO replace with password
         System.out.println(blService.getExtras().get(BikeLockBluetoothLeService.EXTRA_PASS));
-		getActivity().startService(blService);
-	}
-	
+        getActivity().startService(blService);
+    }
+
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -55,7 +61,8 @@ public class MainScreen extends ListFragment implements OnClickListener{
 		if (v.getId() == R.id.add_device) {
 
             FragmentTransaction ft = this.getFragmentManager().beginTransaction();
-            ft.replace(R.id.container, new NewLockFragment(), NewLockFragment.class.getName())
+            NewLockFragment fragment = new NewLockFragment();
+            ft.replace(R.id.container, fragment, NewLockFragment.class.getName())
                     .addToBackStack(NewLockFragment.class.getName())
                     .commit();
 		}

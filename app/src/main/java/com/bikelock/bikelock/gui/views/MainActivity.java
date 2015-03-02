@@ -1,9 +1,11 @@
 package com.bikelock.bikelock.gui.views;
 
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import com.bikelock.bikelock.R;
 
@@ -17,7 +19,7 @@ public class MainActivity extends ActionBarActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FragmentTransaction fr = getFragmentManager().beginTransaction();
-		fr.replace(R.id.container, new MainScreen(), MainScreen.class.getName()).addToBackStack(MainScreen.class.getName());
-		fr.commit();
+		fr.add(R.id.container, new MainScreen(), MainScreen.class.getName()).commit();
 	}
+
 }

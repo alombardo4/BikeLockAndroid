@@ -173,6 +173,7 @@
     <eat-comment/>
     <string name="action_settings">Settings</string>
     <string name="app_name">Bike Lock</string>
+    <string name="connecting_to_lock">Connecting to lock...</string>
     <string name="hello_world">Hello world!</string>
     <!-- From: file:/Users/alec/Git/BikeLock/app/src/main/res/values/styles.xml -->
     <eat-comment/>

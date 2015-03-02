@@ -1432,7 +1432,8 @@ containing a value of this type.
         public static final int abc_toolbar_collapse_description=0x7f0a000f;
         public static final int action_settings=0x7f0a0010;
         public static final int app_name=0x7f0a0011;
-        public static final int hello_world=0x7f0a0012;
+        public static final int connecting_to_lock=0x7f0a0012;
+        public static final int hello_world=0x7f0a0013;
     }
     public static final class style {
         /** 
