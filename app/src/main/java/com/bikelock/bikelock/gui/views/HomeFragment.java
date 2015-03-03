@@ -1,6 +1,12 @@
 package com.bikelock.bikelock.gui.views;
 
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -8,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -69,9 +76,32 @@ public class HomeFragment extends Fragment {
         delete = (Button) view.findViewById(R.id.delete_button);
 
         connect.setOnClickListener(new ConnectListener());
+        edit.setOnClickListener(new EditListener());
+        delete.setOnClickListener(new DeleteListener());
         name.setText(device.getName());
         return view;
 
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        MainActivity.toolbar.setTitle(getString(R.string.bike_lock));
+    }
+    private class DeleteListener implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+            DeleteDevicePopupDialog deleteDevicePopupDialog = new DeleteDevicePopupDialog();
+            deleteDevicePopupDialog.show(getFragmentManager(), DeleteDevicePopupDialog.class.getName());
+        }
+    }
+    private class EditListener implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+            EditNamePopupDialog editNamePopupDialog = new EditNamePopupDialog();
+            editNamePopupDialog.show(getFragmentManager(), EditNamePopupDialog.class.getName());
+        }
     }
 
     private class ConnectListener implements View.OnClickListener {
@@ -91,6 +121,70 @@ public class HomeFragment extends Fragment {
         }
     }
 
+    private class EditNamePopupDialog extends DialogFragment {
+
+        private EditText nameField;
+
+        public EditNamePopupDialog() {
+
+        }
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            // Use the Builder class for convenient dialog construction
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            LayoutInflater inflater = getActivity().getLayoutInflater();
+            View view = inflater.inflate(R.layout.edit_name_popup_dialog, null);
+            nameField = (EditText) view.findViewById(R.id.edit_name_edittext);
+            nameField.setText(device.getName());
+
+            builder.setView(view)
+                    .setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            device.setName(nameField.getText().toString());
+                            name.setText(device.getName());
+                            LockDBAdapter dbAdapter = LockDBAdapter.getInstance(getActivity());
+                            dbAdapter.updateDevice(device);
+                        }
+                    })
+                    .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // User cancelled the dialog
+                        }
+                    });
+            // Create the AlertDialog object and return it
+            return builder.create();
+        }
+    }
+    private class DeleteDevicePopupDialog extends DialogFragment {
 
 
+        public DeleteDevicePopupDialog() {
+
+        }
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            // Use the Builder class for convenient dialog construction
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+            builder.setMessage(getString(R.string.remove_device_confirmation))
+                    .setPositiveButton(R.string.remove, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            LockDBAdapter dbAdapter = LockDBAdapter.getInstance(getActivity());
+                            dbAdapter.deleteDevice(device);
+                            FragmentTransaction ft = getActivity().getFragmentManager().beginTransaction();
+                            ft.replace(R.id.container, new NewLockFragment(), NewLockFragment.class.getName())
+                                    .commit();
+                        }
+                    })
+                    .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // User cancelled the dialog
+                        }
+                    });
+            // Create the AlertDialog object and return it
+            return builder.create();
+        }
+    }
 }

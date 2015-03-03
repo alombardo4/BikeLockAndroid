@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Lock Name" >
+        android:hint="@string/lock_name" >
 
         <requestFocus />
     </EditText>
@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Lock Password" />
-
+        android:inputType="textPassword"
+        android:hint="@string/lock_password" />
 </LinearLayout>
-<!-- From: file:/Users/alec/Git/BikeLock/app/src/main/res/layout/add_lock_diag.xml -->
+<!-- From: file:/D:/Documents/BikeLockAndroid/app/src/main/res/layout/add_lock_diag.xml -->

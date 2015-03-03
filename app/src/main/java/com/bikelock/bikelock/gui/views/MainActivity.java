@@ -10,7 +10,7 @@ import com.bikelock.bikelock.R;
 import com.bikelock.bikelock.database.LockDBAdapter;
 
 public class MainActivity extends ActionBarActivity {
-	private Toolbar toolbar;
+	static Toolbar toolbar;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

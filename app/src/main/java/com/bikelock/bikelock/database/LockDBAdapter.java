@@ -66,6 +66,22 @@ public class LockDBAdapter {
         return devices;
     }
 
+    public void updateDevice(PairedDevice device) {
+        SQLiteDatabase db = getWriteable();
+        ContentValues values = new ContentValues();
+        values.put(LockDatabase.LOCK_NAME, device.getName());
+        values.put(LockDatabase.LOCK_PASS, device.getPassword());
+        String whereClause = BaseColumns._ID + "=?";
+        db.update(LockDatabase.TABLE_NAME, values, whereClause, new String[] {device.getAddress()});
+        db.close();
+    }
+
+    public void deleteDevice(PairedDevice device) {
+        SQLiteDatabase db = getWriteable();
+        String whereClause = BaseColumns._ID + "=?";
+        db.delete(LockDatabase.TABLE_NAME, whereClause, new String[]{device.getAddress()});
+        db.close();
+    }
     private SQLiteDatabase getWriteable() {
         return dbHelper.getWritableDatabase();
     }

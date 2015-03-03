@@ -115,7 +115,7 @@ public class NewLockFragment extends ListFragment implements LeScanCallback{
             case REQUEST_ADD_BT:
                 if (resultCode == Activity.RESULT_OK) {
                     FragmentTransaction ft = getFragmentManager().beginTransaction();
-                    ft.replace(R.id.container, new MainScreen(), MainScreen.class.getName())
+                    ft.replace(R.id.container, HomeFragment.newInstance(), HomeFragment.class.getName())
                             .commit();
 
 
@@ -137,7 +137,7 @@ public class NewLockFragment extends ListFragment implements LeScanCallback{
 	@Override
 	public void onResume() {
 		super.onResume();
-		
+	    MainActivity.toolbar.setTitle(getString(R.string.add_lock));
 		//Enable Bluetooth if disabled; otherwise, start scanning right away
 		if (!mBluetoothAdapter.isEnabled()) {
 		    Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
@@ -171,7 +171,7 @@ public class NewLockFragment extends ListFragment implements LeScanCallback{
 			
 			//TODO: Fix button always closing dialog
 			
-			builder.setPositiveButton(android.R.string.ok, this);
+			builder.setPositiveButton(R.string.save, this);
 			builder.setNegativeButton(android.R.string.cancel, this);
 			
 			return builder.create();

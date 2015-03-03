@@ -2,11 +2,17 @@
 <resources>
 
     <string name="app_name">Bike Lock</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="connecting_to_lock">Connecting to lock...</string>
-    <string name="title_activity_home">HomeActivity</string>
-
-<!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="edit_name">Edit Name</string>
+    <string name="remove_device_confirmation">Are you sure you want to remove this lock?</string>
+    <string name="remove">Remove</string>
+    <string name="add_lock">Add Lock</string>
+    <string name="bike_lock">Bike Lock</string>
+    <string name="lock_name">Lock name</string>
+    <string name="lock_password">Lock password</string>
+    <string name="unlock">Unlock</string>
+    <string name="unpair">Unpair</string>
 </resources>
