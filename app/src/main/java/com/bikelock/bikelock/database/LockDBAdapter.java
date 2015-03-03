@@ -30,6 +30,7 @@ public class LockDBAdapter {
     public void addLock(PairedDevice device) {
         addLock(device.getAddress(), device.getName(), device.getPassword());
     }
+
     private void addLock(String address, String name, String password) {
         ContentValues values = new ContentValues();
         values.put(BaseColumns._ID, address);
@@ -37,6 +38,19 @@ public class LockDBAdapter {
         values.put(LockDatabase.LOCK_PASS, password);
         insertItem(values);
 
+    }
+
+
+    public int getNumberOfDevices() {
+        SQLiteDatabase db = getReadable();
+        Cursor cursor = db.query(LockDatabase.TABLE_NAME, new String[]{BaseColumns._ID}, null, null, null, null, null);
+        int count = cursor.getCount();
+        db.close();
+        return count;
+    }
+
+    public PairedDevice getFirstDevice() {
+        return getDevices().get(0);
     }
 
     public List<PairedDevice> getDevices() {
@@ -48,6 +62,7 @@ public class LockDBAdapter {
             PairedDevice device = new PairedDevice(cursor.getString(0), cursor.getString(1), cursor.getString(2));
             devices.add(device);
         }
+        db.close();
         return devices;
     }
 
@@ -64,4 +79,6 @@ public class LockDBAdapter {
         db.insert(LockDatabase.TABLE_NAME, null, values);
         db.close();
     }
+
+
 }

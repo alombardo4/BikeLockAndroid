@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -26,8 +27,10 @@ public class MainScreen extends ListFragment implements OnClickListener{
 			Bundle savedInstanceState) {
 		
 		View layout = inflater.inflate(R.layout.main_screen, container, false);
-		View btn = layout.findViewById(R.id.add_device);
+		Button btn = (Button) layout.findViewById(R.id.add_device);
 		btn.setOnClickListener(this);
+        mAdapter = new LockListAdapter(getActivity());
+        setListAdapter(mAdapter);
 		return layout;
 	}
 	
@@ -46,15 +49,6 @@ public class MainScreen extends ListFragment implements OnClickListener{
         getActivity().startService(blService);
     }
 
-
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		
-		mAdapter = new LockListAdapter(getActivity());
-		setListAdapter(mAdapter);
-	}
-
 	
 	@Override
 	public void onClick(View v) {
@@ -62,9 +56,9 @@ public class MainScreen extends ListFragment implements OnClickListener{
 
             FragmentTransaction ft = this.getFragmentManager().beginTransaction();
             NewLockFragment fragment = new NewLockFragment();
-            ft.replace(R.id.container, fragment, NewLockFragment.class.getName())
-                    .addToBackStack(NewLockFragment.class.getName())
-                    .commit();
+            ft.replace(R.id.container, fragment, NewLockFragment.class.getName());
+            ft.addToBackStack(NewLockFragment.class.getName());
+            ft.commit();
 		}
 	}
 

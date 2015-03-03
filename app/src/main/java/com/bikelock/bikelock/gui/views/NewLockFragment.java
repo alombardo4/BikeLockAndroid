@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -113,7 +114,13 @@ public class NewLockFragment extends ListFragment implements LeScanCallback{
                 break;
             case REQUEST_ADD_BT:
                 if (resultCode == Activity.RESULT_OK) {
-                    getFragmentManager().popBackStack();
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    ft.replace(R.id.container, new MainScreen(), MainScreen.class.getName())
+                            .commit();
+
+
+
+
                 }
             default:
                 super.onActivityResult(requestCode, resultCode, data);
