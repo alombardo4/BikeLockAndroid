@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/alec/Git/BikeLock/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <!-- From: file:/D:/Documents/BikeLockAndroid/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <attr format="reference" name="drawerArrowStyle"/>
     <attr format="dimension" name="height"/>
@@ -16,10 +16,10 @@
     <color name="abc_search_url_text_normal">#7fa87f</color>
     <color name="abc_search_url_text_pressed">@android:color/black</color>
     <color name="abc_search_url_text_selected">@android:color/black</color>
-    <!-- From: file:/Users/alec/Git/BikeLock/app/src/main/res/values/colors.xml -->
+    <!-- From: file:/D:/Documents/BikeLockAndroid/app/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="accent">#FFEB3B</color>
-    <!-- From: file:/Users/alec/Git/BikeLock/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <!-- From: file:/D:/Documents/BikeLockAndroid/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <color name="accent_material_dark">@color/material_deep_teal_200</color>
     <color name="accent_material_light">@color/material_deep_teal_500</color>
@@ -50,11 +50,11 @@
     <color name="material_blue_grey_950">#ff21272b</color>
     <color name="material_deep_teal_200">#ff80cbc4</color>
     <color name="material_deep_teal_500">#ff009688</color>
-    <!-- From: file:/Users/alec/Git/BikeLock/app/src/main/res/values/colors.xml -->
+    <!-- From: file:/D:/Documents/BikeLockAndroid/app/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="primary">#FFCC11</color>
     <color name="primary_dark">#FFA000</color>
-    <!-- From: file:/Users/alec/Git/BikeLock/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <!-- From: file:/D:/Documents/BikeLockAndroid/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <color name="primary_dark_material_dark">#ff000000</color>
     <color name="primary_dark_material_light">#ff757575</color>
@@ -132,11 +132,11 @@
     <dimen name="abc_text_size_subtitle_material_toolbar">16dp</dimen>
     <dimen name="abc_text_size_title_material">20sp</dimen>
     <dimen name="abc_text_size_title_material_toolbar">20dp</dimen>
-    <!-- From: file:/Users/alec/Git/BikeLock/app/src/main/res/values/dimens.xml -->
+    <!-- From: file:/D:/Documents/BikeLockAndroid/app/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <!-- From: file:/Users/alec/Git/BikeLock/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <!-- From: file:/D:/Documents/BikeLockAndroid/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <item name="dialog_fixed_height_major" type="dimen">80%</item>
     <item name="dialog_fixed_height_minor" type="dimen">100%</item>
@@ -170,7 +170,7 @@
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
-    <!-- From: file:/Users/alec/Git/BikeLock/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/D:/Documents/BikeLockAndroid/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="action_settings">Settings</string>
     <string name="add_lock">Add Lock</string>
@@ -186,7 +186,7 @@
     <string name="save">Save</string>
     <string name="unlock">Unlock</string>
     <string name="unpair">Unpair</string>
-    <!-- From: file:/Users/alec/Git/BikeLock/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/D:/Documents/BikeLockAndroid/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Set AppCompat’s actionBarStyle -->
@@ -205,7 +205,7 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
-    <!-- From: file:/Users/alec/Git/BikeLock/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <!-- From: file:/D:/Documents/BikeLockAndroid/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <style name="Base.TextAppearance.AppCompat" parent="android:TextAppearance">
         <item name="android:textColor">?android:textColorPrimary</item>
@@ -1190,7 +1190,7 @@
     <style name="ThemeOverlay.AppCompat.Dark" parent="Base.ThemeOverlay.AppCompat.Dark"/>
     <style name="ThemeOverlay.AppCompat.Dark.ActionBar" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="ThemeOverlay.AppCompat.Light" parent="Base.ThemeOverlay.AppCompat.Light"/>
-    <!-- From: file:/Users/alec/Git/BikeLock/app/src/main/res/values/toolbar.xml -->
+    <!-- From: file:/D:/Documents/BikeLockAndroid/app/src/main/res/values/toolbar.xml -->
     <eat-comment/>
     <style name="Toolbar" parent="Theme.AppCompat">
         <!-- android:textColorPrimary is the  color of the title text
@@ -1216,7 +1216,7 @@
               even if we define popupTheme for our <Toolbar> -->
          <item name="android:background">@color/primary</item>
     </style>
-    <!-- From: file:/Users/alec/Git/BikeLock/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <!-- From: file:/D:/Documents/BikeLockAndroid/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <style name="Widget.AppCompat.ActionBar" parent="Base.Widget.AppCompat.ActionBar"/>
     <style name="Widget.AppCompat.ActionBar.Solid" parent="Base.Widget.AppCompat.ActionBar.Solid"/>

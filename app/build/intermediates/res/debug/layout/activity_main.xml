@@ -14,8 +14,7 @@
             android:theme="@style/Toolbar"
             android:layout_width="match_parent"
             android:minHeight="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
             android:elevation="10dp" />
 
     </LinearLayout>
-</LinearLayout><!-- From: file:/Users/alec/Git/BikeLock/app/src/main/res/layout/activity_main.xml -->
+</LinearLayout><!-- From: file:/D:/Documents/BikeLockAndroid/app/src/main/res/layout/activity_main.xml -->

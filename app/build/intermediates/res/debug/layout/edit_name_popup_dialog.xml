@@ -15,4 +15,4 @@
         android:layout_height="wrap_content"
         android:id="@+id/edit_name_edittext"
         android:layout_gravity="center_horizontal" />
-</LinearLayout><!-- From: file:/Users/alec/Git/BikeLock/app/src/main/res/layout/edit_name_popup_dialog.xml -->
+</LinearLayout><!-- From: file:/D:/Documents/BikeLockAndroid/app/src/main/res/layout/edit_name_popup_dialog.xml -->

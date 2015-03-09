@@ -14,7 +14,6 @@
             android:theme="@style/Toolbar"
             android:layout_width="match_parent"
             android:minHeight="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
             android:elevation="10dp" />
 
     </LinearLayout>
