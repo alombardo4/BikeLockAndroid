@@ -3,14 +3,17 @@ package com.bikelock.bikelock.gui.views;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -61,7 +64,30 @@ public class HomeFragment extends Fragment {
         LockDBAdapter adapter = LockDBAdapter.getInstance(getActivity());
         device = adapter.getFirstDevice();
 
+        setHasOptionsMenu(true);
 
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
+        inflater.inflate(R.menu.main_fragment, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.action_list:
+                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.container, new LockListFragment())
+                        .addToBackStack(null)
+                        .commit();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
@@ -92,7 +118,7 @@ public class HomeFragment extends Fragment {
         @Override
         public void onClick(View v) {
             DeleteDevicePopupDialog deleteDevicePopupDialog = new DeleteDevicePopupDialog();
-            deleteDevicePopupDialog.show(getFragmentManager(), DeleteDevicePopupDialog.class.getName());
+            deleteDevicePopupDialog.show(getActivity().getSupportFragmentManager(), DeleteDevicePopupDialog.class.getName());
         }
     }
     private class EditListener implements View.OnClickListener {
@@ -100,7 +126,7 @@ public class HomeFragment extends Fragment {
         @Override
         public void onClick(View v) {
             EditNamePopupDialog editNamePopupDialog = new EditNamePopupDialog();
-            editNamePopupDialog.show(getFragmentManager(), EditNamePopupDialog.class.getName());
+            editNamePopupDialog.show(getActivity().getSupportFragmentManager(), EditNamePopupDialog.class.getName());
         }
     }
 
@@ -173,8 +199,8 @@ public class HomeFragment extends Fragment {
                         public void onClick(DialogInterface dialog, int id) {
                             LockDBAdapter dbAdapter = LockDBAdapter.getInstance(getActivity());
                             dbAdapter.deleteDevice(device);
-                            FragmentTransaction ft = getActivity().getFragmentManager().beginTransaction();
-                            ft.replace(R.id.container, new NewLockFragment(), NewLockFragment.class.getName())
+                            FragmentTransaction ft = ((android.support.v7.app.ActionBarActivity) getActivity()).getSupportFragmentManager().beginTransaction();
+                            ft.replace(R.id.container, LockListFragment.newInstance(), LockListFragment.class.getName())
                                     .commit();
                         }
                     })

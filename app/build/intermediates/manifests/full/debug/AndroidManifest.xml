@@ -39,6 +39,10 @@
         </activity>
 
         <service android:name="com.bikelock.bikelock.bluetooth.BikeLockBluetoothLeService" />
+
+        <activity
+            android:name="android.support.v7.widget.TestActivity"
+            android:label="RecyclerViewTestActivity" />
     </application>
 
 </manifest>

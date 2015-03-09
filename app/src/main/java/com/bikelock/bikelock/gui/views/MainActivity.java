@@ -1,7 +1,7 @@
 package com.bikelock.bikelock.gui.views;
 
-import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
@@ -21,18 +21,23 @@ public class MainActivity extends ActionBarActivity {
 
         LockDBAdapter adapter = LockDBAdapter.getInstance(this);
         int count = adapter.getNumberOfDevices();
-        if (count == 1) {
-            FragmentTransaction fr = getFragmentManager().beginTransaction();
-            fr.replace(R.id.container, HomeFragment.newInstance(), HomeFragment.class.getName())
-                    .addToBackStack(HomeFragment.class.getName())
+        if (count >= 1) {
+            FragmentTransaction fr = getSupportFragmentManager().beginTransaction();
+            fr.add(R.id.container, HomeFragment.newInstance(), null)
                     .commit();
         } else {
-            FragmentTransaction fr = getFragmentManager().beginTransaction();
-            fr.replace(R.id.container, new NewLockFragment(), NewLockFragment.class.getName())
-                    .addToBackStack(NewLockFragment.class.getName())
+            FragmentTransaction fr = getSupportFragmentManager().beginTransaction();
+            fr.add(R.id.container, new NewLockFragment(), null)
                     .commit();
 
         }
+
+    }
+    @Override
+    public void onBackPressed(){
+
+        // here remove code for your last fragment
+        super.onBackPressed();
 
     }
 

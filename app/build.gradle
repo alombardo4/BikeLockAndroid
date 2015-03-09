@@ -20,4 +20,6 @@ android {
 
 dependencies {
     compile 'com.android.support:appcompat-v7:21.0+'
+    compile 'com.melnykov:floatingactionbutton:1.2.0'
+
 }

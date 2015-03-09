@@ -36,6 +36,11 @@ public class LockDBAdapter {
         values.put(BaseColumns._ID, address);
         values.put(LockDatabase.LOCK_NAME, name);
         values.put(LockDatabase.LOCK_PASS, password);
+        if (getNumberOfDevices() == 0) {
+            values.put(LockDatabase.LOCK_PRIMARY, "1");
+        } else {
+            values.put(LockDatabase.LOCK_PRIMARY, "0");
+        }
         insertItem(values);
 
     }
@@ -50,7 +55,20 @@ public class LockDBAdapter {
     }
 
     public PairedDevice getFirstDevice() {
-        return getDevices().get(0);
+        SQLiteDatabase db = getReadable();
+
+        String whereClause = LockDatabase.LOCK_PRIMARY + "=?";
+        Cursor cursor = db.query(LockDatabase.TABLE_NAME,
+                new String[]{BaseColumns._ID, LockDatabase.LOCK_NAME, LockDatabase.LOCK_PASS},
+                whereClause, new String[]{"1"}, null, null, null);
+        cursor.moveToFirst();
+        db.close();
+        if (cursor.getCount() > 0) {
+            return new PairedDevice(cursor.getString(0), cursor.getString(1), cursor.getString(2));
+        } else {
+            return null;
+        }
+
     }
 
     public List<PairedDevice> getDevices() {
@@ -93,6 +111,18 @@ public class LockDBAdapter {
     private void insertItem(ContentValues values) {
         SQLiteDatabase db = getWriteable();
         db.insert(LockDatabase.TABLE_NAME, null, values);
+        db.close();
+    }
+
+    public void setPrimaryDevice(PairedDevice device) {
+        SQLiteDatabase db = getWriteable();
+        ContentValues values = new ContentValues();
+        values.put(LockDatabase.LOCK_PRIMARY, "0");
+        db.update(LockDatabase.TABLE_NAME, values, null, null);
+        values = new ContentValues();
+        values.put(LockDatabase.LOCK_PRIMARY, "1");
+        String whereClause = BaseColumns._ID + "=?";
+        db.update(LockDatabase.TABLE_NAME, values, whereClause, new String[] {device.getAddress()});
         db.close();
     }
 

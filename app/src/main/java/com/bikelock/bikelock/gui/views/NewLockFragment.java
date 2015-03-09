@@ -3,9 +3,6 @@ package com.bikelock.bikelock.gui.views;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
-import android.app.FragmentTransaction;
-import android.app.ListFragment;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
@@ -16,6 +13,9 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.ListFragment;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -50,9 +50,9 @@ public class NewLockFragment extends ListFragment implements LeScanCallback{
         bundle.putString(AddLockDialog.ADDR_KEY, device.getAddress());
         
         DialogFragment diag = new AddLockDialog();
-        diag.setTargetFragment(this, REQUEST_ADD_BT);
+        diag.setTargetFragment( this, REQUEST_ADD_BT);
         diag.setArguments(bundle);
-        diag.show(getFragmentManager(), AddLockDialog.class.getName());
+        diag.show(getActivity().getSupportFragmentManager(), AddLockDialog.class.getName());
         
     }
 
@@ -114,7 +114,7 @@ public class NewLockFragment extends ListFragment implements LeScanCallback{
                 break;
             case REQUEST_ADD_BT:
                 if (resultCode == Activity.RESULT_OK) {
-                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                     ft.replace(R.id.container, HomeFragment.newInstance(), HomeFragment.class.getName())
                             .commit();
 
@@ -143,7 +143,7 @@ public class NewLockFragment extends ListFragment implements LeScanCallback{
 		    Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
 		    startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
 		}else{
-			mAdapter.clear();
+//			mAdapter.clear();
 			scanLeDevice(true);
 		}
 	}
@@ -210,7 +210,7 @@ public class NewLockFragment extends ListFragment implements LeScanCallback{
                     PairedDevice device = new PairedDevice(address, name.getText().toString(), passwd.getText().toString());
 
                     dbAdapter.addLock(device);
-					
+					dbAdapter.setPrimaryDevice(device);
 					getTargetFragment().onActivityResult(getTargetRequestCode(), Activity.RESULT_OK, null);
 					dismiss();
 				}

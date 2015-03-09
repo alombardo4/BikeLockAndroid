@@ -12,7 +12,11 @@
     <string name="add_lock">Add Lock</string>
     <string name="bike_lock">Bike Lock</string>
     <string name="lock_name">Lock name</string>
+    <string name="your_locks">Your Locks</string>
     <string name="lock_password">Lock password</string>
     <string name="unlock">Unlock</string>
     <string name="unpair">Unpair</string>
+    <string name="list_device">List Devices</string>
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

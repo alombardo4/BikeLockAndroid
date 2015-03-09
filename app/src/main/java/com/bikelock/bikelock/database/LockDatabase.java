@@ -11,14 +11,15 @@ public class LockDatabase extends SQLiteOpenHelper {
 	public static final String TABLE_NAME = "LOCKDB";
 	public static final String LOCK_NAME = "NAME";
 	public static final String LOCK_PASS = "PASSWD";
-
+    public static final String LOCK_PRIMARY = "MAIN";
 	public LockDatabase(Context context) {
 		super(context, DATABASE_NAME, null, 1);
 	}
 	
 	private static final String CREATE_COMMAND = "CREATE TABLE " + TABLE_NAME + " ("
 			+ BaseColumns._ID + " TEXT PRIMARY KEY, "
-			+ LOCK_NAME + " TEXT,"
+            + LOCK_PRIMARY + " TEXT, "
+			+ LOCK_NAME + " TEXT, "
 			+ LOCK_PASS + " TEXT)";
 	
 	@Override

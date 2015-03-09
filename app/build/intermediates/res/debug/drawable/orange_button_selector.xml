@@ -1,4 +1,4 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true" android:drawable="@drawable/orange_pressed" />
     <item android:state_pressed="false" android:drawable="@drawable/orange_unpressed" />
-</selector><!-- From: file:/D:/Documents/BikeLockAndroid/app/src/main/res/drawable/orange_button_selector.xml -->
+</selector><!-- From: file:/Users/alec/Git/BikeLock/app/src/main/res/drawable/orange_button_selector.xml -->
