@@ -27,35 +27,76 @@ public class BluetoothCallback extends BluetoothGattCallback{
 	private static final int STATE_CONNECTED = 0;
 	private static final int STATE_WRITE = 1;
 	private static final int STATE_READ = 2;
+	private static final int RESET_TIMEOUT = 3;
+	private static final int STATE_CLOSING = 4;
 	
 	private BluetoothGatt mGatt;
 	private BluetoothGattCharacteristic RxTx;
+	private BluetoothDevice mDevice;
+	private final Context mContext;
 	
-	private static final int TIMEOUT = 10000;
-	private Thread mCurrentThread;
+	private static final int TIMEOUT = 3000;
 	private volatile int mInterruptState = STATE_NOTHING;
 	
 	/**
 	 * Closes the GATT
 	 */
 	public final void close(){
+		mInterruptState = STATE_CLOSING;
 		mGatt.close();
 	}
 
-	private ArrayDeque<Byte> readBuffer = new ArrayDeque<Byte>();
-	private ArrayDeque<Byte[]> lineBuffer = new ArrayDeque<Byte[]>();
+	private final ArrayDeque<Byte> readBuffer;
+	private final ArrayDeque<Byte[]> lineBuffer;
+	private final Handler mHandler;
 	
-	public byte[] readLine(){
+	/**
+	 * Creates a new callback. The constructor must not be called in the UI thread.
+	 * @author Michael Chen
+	 */
+	public BluetoothCallback(Context context) {
+		//Initialize the read buffers
+		readBuffer = new ArrayDeque<Byte>();
+		lineBuffer = new ArrayDeque<Byte[]>();
 		
-		while (lineBuffer.isEmpty()) {
-			waitUntil(TIMEOUT, STATE_READ);			
+		mContext = context;
+		
+		mHandler = new Handler(Looper.getMainLooper());
+	}
+	
+	/**
+	 * Reads a line; the line must be terminated by a carriage return
+	 * @return The sequence of bytes, not including the carriage return character or null if a timeout occured
+	 */
+	public byte[] readLine(){
+		//All operators regarding lineBuffer must be synchronized
+		boolean isEmpty;
+		synchronized (lineBuffer) {
+			isEmpty = lineBuffer.isEmpty();
+		}		
+		
+		//Wait until the buffer is not empty anymore or a timeout occurs
+		if (isEmpty) {
+			waitUntil(TIMEOUT, STATE_READ);
 		}
 		
-		Byte[] line = lineBuffer.pop();
-		byte[] bLine = new byte[line.length];
+		final Byte[] line;
+		
+		//Pop the last complete line read.
+		synchronized (lineBuffer) {
+			//If nothing arrived before the timeout period, quit
+			if (lineBuffer.isEmpty()) return null;
+			
+			//Retrieve the message
+			line = lineBuffer.pop();
+		}		
+		
+		//Cast from Byte to byte
+		final byte[] bLine = new byte[line.length];
 		for (int i = 0; i < line.length; i++) {
 			bLine[i] = (byte) line[i];
 		}
+		
 		return bLine;		
 	}
 	
@@ -69,13 +110,20 @@ public class BluetoothCallback extends BluetoothGattCallback{
 			for (byte incoming : newBytes) {
 				switch (incoming) {
 				case '\r':
+					//On carriage return, add the new line to the lineBuffer queue
+					
 					Byte[] tmp = new Byte[readBuffer.size()]; 
 					readBuffer.toArray(tmp);
-					lineBuffer.add(tmp);
+					
+					synchronized (lineBuffer) {
+						lineBuffer.add(tmp);
+					}
+					
 					readBuffer.clear();
 					
-					mInterruptState = STATE_READ;
-					mCurrentThread.interrupt();
+					//If anyone is awaiting a read, awaken them
+					notify(STATE_READ);
+					
 					break;
 				default:
 					readBuffer.add(incoming);
@@ -84,14 +132,10 @@ public class BluetoothCallback extends BluetoothGattCallback{
 			}
 		} 
 	}
-	
-	public void onReliableWriteCompleted(BluetoothGatt gatt, int status) {}
-	
-	public void onCharacteristicRead(BluetoothGatt gatt, android.bluetooth.BluetoothGattCharacteristic characteristic, int status) {}
-	
+		
 	public void onCharacteristicWrite(BluetoothGatt gatt, android.bluetooth.BluetoothGattCharacteristic characteristic, int status) {
-		mInterruptState = STATE_WRITE;
-		mCurrentThread.interrupt();
+		//Continue writing
+		notify(STATE_WRITE);
 	}
 
 	public void onConnectionStateChange(android.bluetooth.BluetoothGatt gatt, int status, int newState) {
@@ -102,8 +146,16 @@ public class BluetoothCallback extends BluetoothGattCallback{
 			gatt.discoverServices();
 			break;
 		case BluetoothProfile.STATE_DISCONNECTED:
+			if (mInterruptState == STATE_CLOSING) {
+				return;
+			}
 			Log.i(TAG, "Lock Disconnected");
-			gatt.close();
+			
+			notify(RESET_TIMEOUT);
+			
+			close();
+			mGatt = mDevice.connectGatt(mContext, false, BluetoothCallback.this);
+			
 			break;
 		default:
 			break;
@@ -128,8 +180,7 @@ public class BluetoothCallback extends BluetoothGattCallback{
 			gatt.setCharacteristicNotification(RxTx, true);
 			
 			//Make the connect() method return
-			mInterruptState = STATE_CONNECTED;
-			mCurrentThread.interrupt();
+			notify(STATE_CONNECTED);
 			
 //			BluetoothGattDescriptor descriptor = RxTx.getDescriptor(uuidClientConfig);
 //			descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
@@ -145,16 +196,14 @@ public class BluetoothCallback extends BluetoothGattCallback{
 	 * @return True if the connection succeeded, false otherwise
 	 */
 	public boolean connect(final BluetoothDevice device,final Context context){
-		Handler handler = new Handler(Looper.getMainLooper());
-		handler.post(new Runnable() {
+		mDevice = device;
+		mHandler.post(new Runnable() {
 			@Override
 			public void run() {
 				mGatt = device.connectGatt(context, false, BluetoothCallback.this);
 			}
 		});
-		
-		
-		mCurrentThread = Thread.currentThread();	
+			
 		return waitUntil(TIMEOUT , STATE_CONNECTED);	
 	}
 
@@ -164,11 +213,21 @@ public class BluetoothCallback extends BluetoothGattCallback{
 	 */
 	public void writeBytes(byte[] bytes){
 		//Split the bytes into the 20 byte blocks supported by android
-		List<byte[]> blocks = splitArray(bytes, 20);
-		for (byte[] block : blocks) {
-			RxTx.setValue(block);
-			mGatt.writeCharacteristic(RxTx);
-			waitUntil(TIMEOUT, STATE_WRITE);
+		final List<byte[]> blocks = splitArray(bytes, 20);
+		
+		for (final byte[] block : blocks) {
+			
+			//Write the value from the main thread
+			mHandler.post(new Runnable() {
+				@Override
+				public void run() {
+					RxTx.setValue(block);
+					mGatt.writeCharacteristic(RxTx);
+				}
+			});
+			
+			//Wait until the block has been written
+			waitFor(STATE_WRITE);
 			
 			//Not optional
 			try {
@@ -205,22 +264,69 @@ public class BluetoothCallback extends BluetoothGattCallback{
 	 * Waits until the selected interrupt is raised
 	 * @param timeout The requested timeout
 	 * @param flag The required flag
-	 * @return True if the interrupt was raised, false on timeout failure
+	 * @return True if the thread was notified, false on timeout failure
 	 */
-	private boolean waitUntil(int timeout, int flag){
-		try {
-			Thread.sleep(timeout);
-		} catch (InterruptedException e) {
-			//If interrupted on time, return true
-			if (mInterruptState == flag) {
-				mInterruptState = STATE_NOTHING;
-				return true;
-			} else{
-				//If the interrupt was unrelated, keep waiting
-				waitUntil(timeout, flag);
+	private synchronized boolean waitUntil(int timeout, int flag){
+		
+		//Used to differentiate a timeout exit from a notify exit
+		long tBefore=System.nanoTime() / 1000;
+		
+		while (true){
+			try {
+				wait(timeout);
+				
+				//If the right flag was set, resume execution
+				if (mInterruptState == flag) {
+					mInterruptState = STATE_NOTHING;
+					return true;
+				}
+				
+				//Reset the timeout
+				if (mInterruptState == RESET_TIMEOUT) {
+					mInterruptState = STATE_NOTHING;
+					tBefore = System.nanoTime()/1000;
+				}
+				
+				if (System.nanoTime()/ 1000 - tBefore > timeout) {
+					//Fail on timeout
+					return false;
+				}
+				
+			} catch (InterruptedException e) {
+				if (mInterruptState == flag) {
+					mInterruptState = STATE_NOTHING;
+					return true;
+				}
 			}
 		}
-		//On timeout, fail
-		return false;
+	}
+	
+	/**
+	 * Wakes up the thread
+	 * @param flag
+	 */
+	private synchronized void notify(int flag){
+		mInterruptState = flag;
+		this.notify();
+	}
+	
+	/**
+	 * Waits until the thread is notified.
+	 * @param flag
+	 */
+	private synchronized void waitFor(int flag){
+		while (true){
+
+			//If the condition is met, resume execution.
+			if (mInterruptState == flag) {
+				mInterruptState = STATE_NOTHING;
+				return;
+			}
+			
+			//Otherwise, just wait
+			try {
+				this.wait();
+			} catch (InterruptedException e) {}
+		}
 	}
 }

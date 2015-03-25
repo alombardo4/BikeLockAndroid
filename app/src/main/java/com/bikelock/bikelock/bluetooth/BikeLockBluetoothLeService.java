@@ -2,6 +2,8 @@ package com.bikelock.bikelock.bluetooth;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+
+import android.app.IntentService;
 import android.app.Service;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -9,6 +11,7 @@ import android.bluetooth.BluetoothManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
+import android.util.Log;
 
 public class BikeLockBluetoothLeService extends Service{
 	public final static String EXTRA_ADDR = "Address";
@@ -19,7 +22,7 @@ public class BikeLockBluetoothLeService extends Service{
 	public IBinder onBind(Intent intent) {
 		return null;
 	}
-	
+
 	/**
 	 * Initialize the adapter and set to unlock the requested device
 	 */
@@ -49,15 +52,34 @@ public class BikeLockBluetoothLeService extends Service{
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
-				BluetoothCallback callback = new BluetoothCallback();
+				BluetoothCallback callback = new BluetoothCallback(com.bikelock.bikelock.bluetooth.BikeLockBluetoothLeService.this);
 				
 				final BluetoothDevice lock = mBluetoothAdapter.getRemoteDevice(address);
 				if (!callback.connect(lock, com.bikelock.bikelock.bluetooth.BikeLockBluetoothLeService.this)){
-					return;
+					Log.e("TAG", "Connection Failed");
+					callback.close();
+                    try {
+                        Thread.sleep(200);
+                    } catch (Exception e) {
+
+                    }
+                    if (!callback.connect(lock, com.bikelock.bikelock.bluetooth.BikeLockBluetoothLeService.this)){
+                        Log.e("TAG", "Connection Failed");
+                        callback.close();
+                        return;
+                    }
 				}
+				
 				callback.writeString("UNLOCK\r");
 				
 				byte[] nonce = callback.readLine();
+				
+				if (nonce == null) {
+					Log.e("TAG","Reading Failed");
+					callback.close();
+					return;
+				}
+				
 				byte hashInput[] = new byte[32];
 				System.arraycopy(password, 0, hashInput, 0, 16);
 				System.arraycopy(nonce, 0, hashInput, 16, 16);
