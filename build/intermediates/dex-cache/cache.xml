@@ -2,53 +2,102 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Alec\Documents\BikeLockAndroid\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jar="/Users/alec/Git/BikeLock/doorlockwear/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="C:\Users\Alec\Documents\BikeLockAndroid\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-26394d346cbf9bc2baba9c11caa9317227aba6f9.jar" />
+        sha1="686344a780033e4ba22b926cd225f8d4941247e6">
+        <dex dex="/Users/alec/Git/BikeLock/doorlockwear/build/intermediates/pre-dexed/debug/classes-0b5688f8dd65bc91c2d074d668fe5c98c6f5f1bd.jar" />
     </item>
     <item
-        jar="C:\Users\Alec\Documents\BikeLockAndroid\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
+        jar="/Users/alec/Git/BikeLock/doorlockwear/build/intermediates/exploded-aar/com.google.android.support/wearable/1.1.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="C:\Users\Alec\Documents\BikeLockAndroid\app\build\intermediates\pre-dexed\debug\classes-e00e478815b9a331c0eab49f20e301bf3395b001.jar" />
+        sha1="27f19641b81b1078e653d2f0e5d1ed44d158a785">
+        <dex dex="/Users/alec/Git/BikeLock/doorlockwear/build/intermediates/pre-dexed/debug/classes-e07f7f817ae43b56a7389e3fe9d5003d886809c2.jar" />
     </item>
     <item
-        jar="C:\Users\Alec\Documents\BikeLockAndroid\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
+        jar="/Users/alec/Git/BikeLock/doorlockwear/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.0/libs/internal_impl-21.0.0.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="C:\Users\Alec\Documents\BikeLockAndroid\app\build\intermediates\pre-dexed\debug\classes-e31fa5d58ea1a05e05a513d31419a66df3227009.jar" />
+        sha1="1609e6d42d0480b0f4188e2c29f75388fa12a8f0">
+        <dex dex="/Users/alec/Git/BikeLock/doorlockwear/build/intermediates/pre-dexed/debug/internal_impl-21.0.0-dd8ae7c2b18b3dfc01acf491f985093a31883edb.jar" />
     </item>
     <item
-        jar="C:\Users\Alec\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jar="/Users/alec/android-sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="C:\Users\Alec\Documents\BikeLockAndroid\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-da10180fa2e94cfde520fa6fce124238697ebb00.jar" />
+        <dex dex="/Users/alec/Git/BikeLock/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-0e8439ea500fcc104c6cf26b097f3d648dd9cfe1.jar" />
     </item>
     <item
-        jar="C:\Users\Alec\Documents\BikeLockAndroid\app\build\intermediates\exploded-aar\com.melnykov\floatingactionbutton\1.2.0\classes.jar"
+        jar="/Users/alec/Git/BikeLock/app/build/intermediates/exploded-aar/com.melnykov/floatingactionbutton/1.2.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="65620ba5e576dcec2c86efa440b00d042a27383b">
-        <dex dex="C:\Users\Alec\Documents\BikeLockAndroid\app\build\intermediates\pre-dexed\debug\classes-cb06d214c6500088a8762ecfa138fa25ef75f860.jar" />
+        <dex dex="/Users/alec/Git/BikeLock/app/build/intermediates/pre-dexed/debug/classes-e6d1256c954fa6fe3c371061d555afd5c9342522.jar" />
     </item>
     <item
-        jar="C:\Users\Alec\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
+        jar="/Users/alec/android-sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.0/support-annotations-21.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1a578b9607b36266c63d43a4fa0ab5664dbe911e">
+        <dex dex="/Users/alec/Git/BikeLock/doorlockwear/build/intermediates/pre-dexed/debug/support-annotations-21.0.0-e81357d53f8add593b706cf16f1039f04ad923ef.jar" />
+    </item>
+    <item
+        jar="/Users/alec/Git/BikeLock/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/Users/alec/Git/BikeLock/app/build/intermediates/pre-dexed/debug/classes-396b403a60fcde0304bed41a978977aa4ea7e1a5.jar" />
+    </item>
+    <item
+        jar="/Users/alec/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
-        <dex dex="C:\Users\Alec\Documents\BikeLockAndroid\app\build\intermediates\pre-dexed\debug\library-2.4.0-24a242d10c467ac6272f593d5e0b35d0bd170c0d.jar" />
+        <dex dex="/Users/alec/Git/BikeLock/app/build/intermediates/pre-dexed/debug/library-2.4.0-4aab722668d270e19e4fb99afe04d4b1b1f74417.jar" />
     </item>
     <item
-        jar="C:\Users\Alec\Documents\BikeLockAndroid\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\21.0.2\classes.jar"
+        jar="/Users/alec/Git/BikeLock/doorlockwear/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/6.5.87/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="95482e7c792a7c0d5a9d5461e97726bd54fe9549">
+        <dex dex="/Users/alec/Git/BikeLock/doorlockwear/build/intermediates/pre-dexed/debug/classes-49ed908ed5f32a529392b802ca37a3f1ced9f09c.jar" />
+    </item>
+    <item
+        jar="/Users/alec/Git/BikeLock/doorlockwear/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/6.5.87/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="6384c6cd674a22610b932d9464aa6938d067f285">
+        <dex dex="/Users/alec/Git/BikeLock/doorlockwear/build/intermediates/pre-dexed/debug/classes-5176bc08e8073cefa78e25d7be954d39d8c3b0bd.jar" />
+    </item>
+    <item
+        jar="/Users/alec/Git/BikeLock/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/Users/alec/Git/BikeLock/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-4a783a25ad5e1be5696e2a406bc08ae0589983b7.jar" />
+    </item>
+    <item
+        jar="/Users/alec/Git/BikeLock/doorlockwear/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/21.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="efeda77c808750cb670ee9c48d8a1835d89dbcb2">
+        <dex dex="/Users/alec/Git/BikeLock/doorlockwear/build/intermediates/pre-dexed/debug/classes-0ff2c63d26f55e954fa523ed59db709063f9f436.jar" />
+    </item>
+    <item
+        jar="/Users/alec/Git/BikeLock/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/Users/alec/Git/BikeLock/app/build/intermediates/pre-dexed/debug/classes-c527ac3676b10a9da2ef2d48e47b3572389b6ef0.jar" />
+    </item>
+    <item
+        jar="/Users/alec/Git/BikeLock/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/21.0.2/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="4796f18d3750bf2bfa078407a94a7f9db35b440d">
-        <dex dex="C:\Users\Alec\Documents\BikeLockAndroid\app\build\intermediates\pre-dexed\debug\classes-cf640cfba7f7fb465397854558cf98fbaaa81d37.jar" />
+        <dex dex="/Users/alec/Git/BikeLock/app/build/intermediates/pre-dexed/debug/classes-1c9f389b05766221e79e9c45c76e9029c3c7cdba.jar" />
     </item>
 
 </items>

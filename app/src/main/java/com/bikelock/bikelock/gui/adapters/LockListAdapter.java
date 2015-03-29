@@ -24,11 +24,13 @@ import java.util.List;
 public class LockListAdapter extends BaseAdapter {
     private LayoutInflater mLayoutInflater;
     private List<PairedDevice> devices;
+    private Activity activity;
 
     public LockListAdapter(Activity activity) {
         LockDBAdapter dbAdapter = LockDBAdapter.getInstance(activity);
         devices = dbAdapter.getDevices();
-        mLayoutInflater = activity.getLayoutInflater();
+        this.activity = activity;
+        mLayoutInflater = this.activity.getLayoutInflater();
     }
 
     @Override
@@ -66,6 +68,10 @@ public class LockListAdapter extends BaseAdapter {
         } else {
             holder.mName.setText(device.getName());
             holder.mAddr.setText(device.getAddress());
+        }
+
+        if (device.isPrimary() == true) {
+            holder.mName.setTextColor(activity.getResources().getColor(R.color.green));
         }
 
         return convertView;

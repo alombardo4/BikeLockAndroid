@@ -207,7 +207,7 @@ public class NewLockFragment extends ListFragment implements LeScanCallback{
 				
 				if (valid == true) {
                     LockDBAdapter dbAdapter = LockDBAdapter.getInstance(getActivity());
-                    PairedDevice device = new PairedDevice(address, name.getText().toString(), passwd.getText().toString());
+                    PairedDevice device = new PairedDevice(address, name.getText().toString(), passwd.getText().toString(), true);
 
                     dbAdapter.addLock(device);
 					dbAdapter.setPrimaryDevice(device);

@@ -64,7 +64,7 @@ public class LockDBAdapter {
         cursor.moveToFirst();
         db.close();
         if (cursor.getCount() > 0) {
-            return new PairedDevice(cursor.getString(0), cursor.getString(1), cursor.getString(2));
+            return new PairedDevice(cursor.getString(0), cursor.getString(1), cursor.getString(2), true);
         } else {
             return null;
         }
@@ -74,10 +74,11 @@ public class LockDBAdapter {
     public List<PairedDevice> getDevices() {
         List<PairedDevice> devices = new ArrayList<>();
         SQLiteDatabase db = getReadable();
-        Cursor cursor = db.query(LockDatabase.TABLE_NAME, new String[]{BaseColumns._ID, LockDatabase.LOCK_NAME, LockDatabase.LOCK_PASS}, null, null, null, null, null);
+        Cursor cursor = db.query(LockDatabase.TABLE_NAME, new String[]{BaseColumns._ID, LockDatabase.LOCK_NAME, LockDatabase.LOCK_PASS, LockDatabase.LOCK_PRIMARY}, null, null, null, null, null);
         for (int i = 0; i < cursor.getCount(); i++) {
             cursor.moveToPosition(i);
-            PairedDevice device = new PairedDevice(cursor.getString(0), cursor.getString(1), cursor.getString(2));
+            boolean isPrimary = Integer.parseInt(cursor.getString(3)) == 1 ? true : false;
+            PairedDevice device = new PairedDevice(cursor.getString(0), cursor.getString(1), cursor.getString(2), isPrimary);
             devices.add(device);
         }
         db.close();

@@ -1,0 +1,4 @@
+<resources>
+    <string name="lock_name">Lock Name</string>
+    <string name="unlock">Unlock</string>
+</resources>
