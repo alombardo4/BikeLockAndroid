@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BikeLock.iml" filepath="$PROJECT_DIR$/BikeLock.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BikeLockAndroid.iml" filepath="$PROJECT_DIR$/BikeLockAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/doorlockwear/doorlockwear.iml" filepath="$PROJECT_DIR$/doorlockwear/doorlockwear.iml" />
     </modules>
