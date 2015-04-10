@@ -6,6 +6,7 @@
     <string name="connecting_to_lock">Connecting to lock...</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
+    <string name="edit">Edit</string>
     <string name="edit_name">Edit Name</string>
     <string name="remove_device_confirmation">Are you sure you want to remove this lock?</string>
     <string name="remove">Remove</string>
@@ -19,4 +20,11 @@
     <string name="list_device">List Devices</string>
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="password_mismatch">The passwords you entered don\'t match</string>
+    <string name="changing_password">Trying to change password...</string>
+    <string name="did_password_change_message">Did the lock unlock?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

@@ -2,53 +2,53 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Alec\Documents\BikeLockAndroid\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jar="F:\Documents\BikeLockAndroid\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\21.0.2\classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="C:\Users\Alec\Documents\BikeLockAndroid\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-26394d346cbf9bc2baba9c11caa9317227aba6f9.jar" />
+        sha1="4796f18d3750bf2bfa078407a94a7f9db35b440d">
+        <dex dex="F:\Documents\BikeLockAndroid\app\build\intermediates\pre-dexed\debug\classes-465dcee55a2757e0840a2256a9f8630f9b82eb15.jar" />
     </item>
     <item
-        jar="C:\Users\Alec\Documents\BikeLockAndroid\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="C:\Users\Alec\Documents\BikeLockAndroid\app\build\intermediates\pre-dexed\debug\classes-e00e478815b9a331c0eab49f20e301bf3395b001.jar" />
-    </item>
-    <item
-        jar="C:\Users\Alec\Documents\BikeLockAndroid\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="C:\Users\Alec\Documents\BikeLockAndroid\app\build\intermediates\pre-dexed\debug\classes-e31fa5d58ea1a05e05a513d31419a66df3227009.jar" />
-    </item>
-    <item
-        jar="C:\Users\Alec\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jar="D:\Android-sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="C:\Users\Alec\Documents\BikeLockAndroid\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-da10180fa2e94cfde520fa6fce124238697ebb00.jar" />
+        <dex dex="F:\Documents\BikeLockAndroid\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-2dea3dae6e3e9be7836a5e73740fa05fef9fb5c9.jar" />
     </item>
     <item
-        jar="C:\Users\Alec\Documents\BikeLockAndroid\app\build\intermediates\exploded-aar\com.melnykov\floatingactionbutton\1.2.0\classes.jar"
+        jar="F:\Documents\BikeLockAndroid\app\build\intermediates\exploded-aar\com.melnykov\floatingactionbutton\1.2.0\classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="65620ba5e576dcec2c86efa440b00d042a27383b">
-        <dex dex="C:\Users\Alec\Documents\BikeLockAndroid\app\build\intermediates\pre-dexed\debug\classes-cb06d214c6500088a8762ecfa138fa25ef75f860.jar" />
+        <dex dex="F:\Documents\BikeLockAndroid\app\build\intermediates\pre-dexed\debug\classes-9585fb8ec6d0416d7d2be108776eaaf0499b0139.jar" />
+    </item>
+    <item
+        jar="F:\Documents\BikeLockAndroid\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="F:\Documents\BikeLockAndroid\app\build\intermediates\pre-dexed\debug\classes-e23fb0fff4b633c14901df084e49b70528c2c181.jar" />
+    </item>
+    <item
+        jar="F:\Documents\BikeLockAndroid\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="F:\Documents\BikeLockAndroid\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-310883bb75f1910489ee50845a1e859b6e33d664.jar" />
     </item>
     <item
         jar="C:\Users\Alec\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
-        <dex dex="C:\Users\Alec\Documents\BikeLockAndroid\app\build\intermediates\pre-dexed\debug\library-2.4.0-24a242d10c467ac6272f593d5e0b35d0bd170c0d.jar" />
+        <dex dex="F:\Documents\BikeLockAndroid\app\build\intermediates\pre-dexed\debug\library-2.4.0-24a242d10c467ac6272f593d5e0b35d0bd170c0d.jar" />
     </item>
     <item
-        jar="C:\Users\Alec\Documents\BikeLockAndroid\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\21.0.2\classes.jar"
+        jar="F:\Documents\BikeLockAndroid\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="4796f18d3750bf2bfa078407a94a7f9db35b440d">
-        <dex dex="C:\Users\Alec\Documents\BikeLockAndroid\app\build\intermediates\pre-dexed\debug\classes-cf640cfba7f7fb465397854558cf98fbaaa81d37.jar" />
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="F:\Documents\BikeLockAndroid\app\build\intermediates\pre-dexed\debug\classes-614678c0b80fadc161e618338e80c321d7596ba7.jar" />
     </item>
 
 </items>
