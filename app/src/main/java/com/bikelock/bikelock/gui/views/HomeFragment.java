@@ -140,7 +140,7 @@ public class HomeFragment extends Fragment {
         private void connectToDevice(PairedDevice device) {
             Intent blService = new Intent(getActivity(), BikeLockBluetoothLeService.class);
             blService.putExtra(BikeLockBluetoothLeService.EXTRA_ADDR, device.getAddress());
-            blService.putExtra(BikeLockBluetoothLeService.EXTRA_PASS, device.getPassword().getBytes());
+            blService.putExtra(BikeLockBluetoothLeService.EXTRA_PASS, device.getPassword());
 
 //            blService.putExtra(BikeLockBluetoothLeService.EXTRA_PASS, new byte[] {0,1,2,3,4,5,6,7,8,9,0xa,0xb,0xc,0xd,0xe,0xf});
             System.out.println(blService.getExtras().get(BikeLockBluetoothLeService.EXTRA_PASS));
@@ -248,8 +248,14 @@ public class HomeFragment extends Fragment {
                     .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             LockDBAdapter dbAdapter = LockDBAdapter.getInstance(getActivity());
+                            String oldPassword = device.getPassword();
                             device.setPassword(password);
                             dbAdapter.updateDevice(device);
+                            Intent blService = new Intent(getActivity(), BikeLockBluetoothLeService.class);
+                            blService.putExtra(BikeLockBluetoothLeService.EXTRA_ADDR, device.getAddress());
+                            blService.putExtra(BikeLockBluetoothLeService.EXTRA_PASS, oldPassword);
+                            blService.putExtra(BikeLockBluetoothLeService.EXTRA_NEW_PASS, password);
+                            getActivity().startService(blService);
                         }
                     })
                     .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {

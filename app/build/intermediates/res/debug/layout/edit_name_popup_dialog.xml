@@ -37,4 +37,4 @@
         android:inputType="textPassword"
         android:id="@+id/new_password_confirm"
         android:layout_gravity="center_horizontal" />
-</LinearLayout><!-- From: file:/F:/Documents/BikeLockAndroid/app/src/main/res/layout/edit_name_popup_dialog.xml -->
+</LinearLayout><!-- From: file:/Users/alec/Git/BikeLock/app/src/main/res/layout/edit_name_popup_dialog.xml -->
