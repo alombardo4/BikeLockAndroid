@@ -19,3 +19,4 @@ The connection is verified using the following method:
 3. App appends stored password to challenge value and performs SHA-256 hash and sends to lock
 4. Lock generates its own SHA-256 hash and validates app's hash
 5. If hashes match, lock triggers solenoids. 
+
