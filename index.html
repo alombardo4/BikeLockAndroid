@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Bikelockandroid : ">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Bikelockandroid</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/alombardo4/BikeLockAndroid">View on GitHub</a>
+
+          <h1 id="project_title">Bikelockandroid</h1>
+          <h2 id="project_tagline"></h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/alombardo4/BikeLockAndroid/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/alombardo4/BikeLockAndroid/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="bikelockandroid" class="anchor" href="#bikelockandroid" aria-hidden="true"><span class="octicon octicon-link"></span></a>BikeLockAndroid</h1>
+
+<p>This app controls a BLE bike lock developed for CS 4605, Mobile and Ubiquitous Computing.</p>
+
+<h1>
+<a id="functionality" class="anchor" href="#functionality" aria-hidden="true"><span class="octicon octicon-link"></span></a>Functionality</h1>
+
+<p></p>Pair with multiple locks
+Nickname locks
+Edit lock passwords
+Unlock from phone and watch
+
+<h1>
+<a id="setup" class="anchor" href="#setup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setup</h1>
+
+<p></p>Requires Android Studio
+Supports Android 4.3+
+Wear app requires Android Wear 5.0+
+
+<h1>
+<a id="details" class="anchor" href="#details" aria-hidden="true"><span class="octicon octicon-link"></span></a>Details</h1>
+
+<p>The connection is verified using the following method:
+1. App sends "unlock" command to lock
+2. Lock sends challenge value to app
+3. App appends stored password to challenge value and performs SHA-256 hash and sends to lock
+4. Lock generates its own SHA-256 hash and validates app's hash
+5. If hashes match, lock triggers solenoids. </p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Bikelockandroid maintained by <a href="https://github.com/alombardo4">alombardo4</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
