@@ -14,9 +14,10 @@ This app controls a BLE bike lock developed for CS 4605, Mobile and Ubiquitous C
 
 # Details
 The connection is verified using the following method:
-1. App sends "unlock" command to lock
-2. Lock sends challenge value to app
-3. App appends stored password to challenge value and performs SHA-256 hash and sends to lock
-4. Lock generates its own SHA-256 hash and validates app's hash
-5. If hashes match, lock triggers solenoids. 
-
+<ol>
+<li>App sends "unlock" command to lock</li>
+<li>2. Lock sends challenge value to app</li>
+<li>App appends stored password to challenge value and performs SHA-256 hash and sends to lock</li>
+<li>Lock generates its own SHA-256 hash and validates app's hash</li>
+<li>If hashes match, lock triggers solenoids.</li>
+</ol>
